@@ -10,13 +10,9 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get('/api/health', (_req, res) => {
-  res.json({ status: 'ok' });
-});
-
 // 🔥 feature modules
 registerTasks(app);
-// registerUsers(app);
+registerUsers(app);
 
 async function bootstrap() {
   await sequelize.authenticate();
