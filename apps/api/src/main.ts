@@ -1,5 +1,7 @@
 import express from 'express';
 import cors from 'cors';
+import http from 'http';
+import { initializeSocket } from './app/realtime/socket';
 import { sequelize } from './db';
 
 import { registerTasks } from './app/tasks';
@@ -14,11 +16,16 @@ app.use(express.json());
 registerTasks(app);
 registerUsers(app);
 
+
 async function bootstrap() {
   await sequelize.authenticate();
   await sequelize.sync();
+  
+  const server = http.createServer(app);
+  
+  initializeSocket(server);
 
-  app.listen(8080, () => {
+  server.listen(8080, () => {
     console.log('[ ready ] http://localhost:8080');
   });
 }

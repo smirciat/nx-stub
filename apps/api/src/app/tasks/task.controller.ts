@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { TaskService } from './task.service';
+import { io } from '../realtime';
 
 const router = Router();
 const service = new TaskService();
@@ -16,18 +17,21 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', async (req, res) => {
   const task = await service.create(req.body);
+  io?.emit('tasksChanged');
   res.status(201).json(task);
 });
 
 router.put('/:id', async (req, res) => {
   const updated = await service.update(Number(req.params.id), req.body);
   if (!updated) return res.status(404).json({ message: 'Not found' });
+  io?.emit('tasksChanged');
   res.json(updated);
 });
 
 router.delete('/:id', async (req, res) => {
   const ok = await service.remove(Number(req.params.id));
   if (!ok) return res.status(404).json({ message: 'Not found' });
+  io?.emit('tasksChanged');
   res.status(204).send();
 });
 

@@ -1,21 +1,27 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TaskService } from '@cleaners-workspace/tasks';
+import { FormsModule } from '@angular/forms';
+import { TaskService, TaskSocketService } from '@cleaners-workspace/tasks';
 
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [CommonModule],
+  imports: [CommonModule,FormsModule],
   templateUrl: './app.html',
 })
 export class App {
   private tasksApi = inject(TaskService);
-
+  private tasksSocket = inject(TaskSocketService);
+  date=new Date().toLocaleDateString();
   tasks = signal<any[]>([]);
   newTitle = signal('');
 
   constructor() {
     this.load();
+    
+    this.tasksSocket.onTasksChanged(() => {
+      this.load();
+    });
   }
 
   load() {
