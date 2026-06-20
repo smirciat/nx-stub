@@ -1,2 +1,23 @@
-<app-nx-welcome></app-nx-welcome>
-<router-outlet></router-outlet>
+<h1>Tasks</h1>
+
+<input
+  [value]="newTitle()"
+  (input)="newTitle.set($any($event.target).value)"
+  placeholder="New task"
+/>
+
+<button (click)="add()">Add</button>
+
+<ul>
+  <li *ngFor="let t of tasks()">
+    <input
+      type="checkbox"
+      [checked]="t.completed"
+      (change)="toggle(t)"
+    />
+
+    {{ t.title }}
+
+    <button (click)="remove(t.id)">x</button>
+  </li>
+</ul>

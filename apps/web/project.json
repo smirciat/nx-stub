@@ -56,6 +56,9 @@
     "serve": {
       "continuous": true,
       "executor": "@angular-devkit/build-angular:dev-server",
+      "options": {
+            "disableHostCheck": true
+          },
       "defaultConfiguration": "development",
       "configurations": {
         "production": {

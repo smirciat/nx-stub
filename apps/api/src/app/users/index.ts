@@ -1,0 +1,1 @@
+export { registerUsers } from './user.module';

@@ -13,7 +13,14 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "paths": {}
+    "paths": {
+      "@cleaners-workspace/shared-types": ["./libs/shared-types/src/index.ts"],
+      "@cleaners-workspace/data-access-tasks": [
+        "./libs/tasks/data-access-tasks/src/index.ts"
+      ],
+      "@cleaners-workspace/tasks": ["./tasks/src/index.ts"],
+      "@cleaners-workspace/users": ["./users/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
