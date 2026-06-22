@@ -1,8 +1,8 @@
 # CleanersWorkspace
 
 A word about this directory structure:  
-    1. /api is the express app, it serves API routes  
-    2. /web is the Angular app, there is very little there as it defines the router paths and imports components from their sources, which are usually found in /domains, /operations, and /shared.  
+    1. /apps/api is the express app, it serves API routes  
+    2. /apps/web is the Angular app, there is very little there as it defines the router paths and imports components from their sources, which are usually found in /domains, /operations, and /shared.  
     3. /domains are libraries that correspond to API routes and their database tables.  One domain per table.  
     4. /operations are libraries that encompass business logic and workflow.  They utilize components from more than one /domain library.  
     5. /shared are libraries for repeated common components that are utilized in multiple domains and operations.  
