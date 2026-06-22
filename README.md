@@ -48,6 +48,20 @@ To generate a new library, use:
 npx nx g @nx/angular:lib mylib
 ```
 
+To specify a directory on generation use:
+
+```sh
+npx nx g @nx/angular:lib --name=mylib  --directory=domains/schedules
+```
+
+A word about this directory structure:
+    /api is the express app, it serves API routes
+    /web is the Angular app, there is very little there as it defines the router paths and moves components from their sources, which are usually found in /domains, /operations, and /shared
+    /domains are libraries that correspond to API routes and their database tables.  One domain per table.
+    /operations are libraries that encompass business logic and workflow.  They utilize components from more than one /domain library
+    /shared are libraries for repeated common components that are utilized in multiple domains and operations
+    
+
 You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
 
 [Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)

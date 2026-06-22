@@ -33,11 +33,7 @@
     "@nx/esbuild:esbuild": {
       "cache": true,
       "dependsOn": ["^build"],
-      "inputs": [
-        "production",
-        "^production",
-        "{workspaceRoot}/tsconfig.json"
-      ]
+      "inputs": ["production", "^production", "{workspaceRoot}/tsconfig.json"]
     }
   },
   "generators": {
@@ -46,6 +42,13 @@
       "linter": "eslint",
       "style": "css",
       "unitTestRunner": "none"
+    },
+    "@nx/angular:library": {
+      "linter": "eslint",
+      "unitTestRunner": "none"
+    },
+    "@nx/angular:component": {
+      "style": "css"
     }
   },
   "neverConnectToCloud": true,

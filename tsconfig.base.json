@@ -14,15 +14,10 @@
     "lib": ["es2020", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
     "paths": {
-      "@cleaners-workspace/shared-types": ["./libs/shared-types/src/index.ts"],
-      "@cleaners-workspace/data-access-tasks": [
-        "./libs/tasks/data-access-tasks/src/index.ts"
-      ],
       "@cleaners-workspace/tasks": ["./domains/tasks/src/index.ts"],
-      "@cleaners-workspace/users": ["./domains/users/src/index.ts"]
+      "@cleaners-workspace/users": ["./domains/users/src/index.ts"],
+      "@cleaners-workspace/schedules": ["./domains/schedules/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
